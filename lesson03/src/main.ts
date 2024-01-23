@@ -1,19 +1,80 @@
-let myName: string = "Dave";
-let meaningOfLife: number;
-let isLoading: boolean;
-let album: any;
+let stringArr = ["one", "hey  ", "dave"];
 
-myName = "John ";
-meaningOfLife = 42;
-isLoading = true;
-album = "van Halen";
-album = 1984;
+let guitars = ["strat", "Les Paul", 5150];
 
-const sum = (a: number, b: string) => {
-  return a + b;
+let mixedData = ["EVH", 1984, true];
+
+stringArr[0] = "John";
+stringArr.push("hey");
+
+guitars[0] = 1984;
+guitars.unshift("Jim");
+
+guitars = stringArr;
+mixedData = guitars;
+
+let test = [];
+let bands: string[] = [];
+bands.push("Van Halen");
+
+// Tuple
+let myTuple: [string, number, boolean] = ["Dave", 42, true];
+
+let mixed = ["John", 1, false];
+
+mixed = myTuple;
+myTuple[1] = 42;
+
+// Objects
+let myObj: object;
+myObj = [];
+console.log(typeof myObj);
+myObj = bands;
+myObj = {};
+
+const exampleObj = {
+  prop1: "Dave",
+  prop2: true,
 };
 
-let postId: string | number;
-let isActive: number | boolean;
+exampleObj.prop1 = "John";
 
-let re: RegExp = /\w+/g;
+interface Guitarist {
+  name?: string;
+  active?: boolean;
+  albums: (string | number)[];
+}
+
+let evh: Guitarist = {
+  name: "Eddie",
+  active: false,
+  albums: [1984, 5150, "OU812"],
+};
+
+let jp: Guitarist = {
+  // name: "Jimmy",
+  albums: ["I", "II", "IV"],
+};
+
+const greatGuitarist = (guitarist: Guitarist) => {
+  if (guitarist.name) {
+    return `Hello ${guitarist.name.toUpperCase()}`;
+  }
+  return "Hello!";
+};
+
+console.log(greatGuitarist(jp));
+
+// Enums
+
+// "Unlike most TypeScript features, Enums are not a type-level addition to JavaScript but something added to the language and runtime."
+
+enum Grade {
+  U = 1,
+  D,
+  C,
+  B,
+  A,
+}
+
+console.log(Grade.U)
